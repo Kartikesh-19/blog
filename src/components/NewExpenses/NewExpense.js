@@ -4,6 +4,7 @@ import { ExpenseForm } from './ExpenseForm'
 
 function NewExpense(props) {
   const saveExpenseDataHandler=(data)=>{
+
     const expenseData ={
       ...data
     }
@@ -13,7 +14,7 @@ function NewExpense(props) {
   return (
     <div className="new-expense">
 
-      <ExpenseForm  onSaveExpenseData={saveExpenseDataHandler} />
+      <ExpenseForm   onSaveExpenseData={saveExpenseDataHandler} />
     </div>
   )
 }

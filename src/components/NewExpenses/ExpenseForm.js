@@ -12,18 +12,19 @@ export const ExpenseForm = (props) => {
     const handleInput=(e)=>{
             const name=e.target.name;
             const value=e.target.value;
+            console.log(typeof value)
             setExpense({...expense ,[name]:value})
             
     }
 
     const handleSubmit=(event)=>{
         event.preventDefault();
-        const expenses ={
+        const exp ={
           title:expense.title,
           amount:expense.amount,
           date:expense.date 
         };
-        props.onSaveExpenseData(expenses)
+        props.onSaveExpenseData(exp)
         const newdata={...expense, id:new Date().getTime().toString()}
         setData([...data,newdata])
         console.log(data);
@@ -31,15 +32,12 @@ export const ExpenseForm = (props) => {
         
       
     }
-    const titleChangeHandler=(event)=>{
-      console.log(event.target.value)
-    }
+ 
   return (
     <>
       <form>
         <div className="new-expense__controls">
           <div className="new-expense__control">
-            <input type='text' onChange={titleChangeHandler}/>
             <label>Title</label>
             <input type="text" name='title' value={expense.title} onChange={handleInput}/>
           </div>
