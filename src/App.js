@@ -1,5 +1,5 @@
 import "./App.css";
-import ExpenseItem from "./components/Expenses/ExpenseItem";
+// import ExpenseItem from "./components/Expenses/ExpenseItem";
 import Card from './components/UI/Card'
 import React, { useState } from "react";
 import NewExpense from "./components/NewExpenses/NewExpense";
@@ -11,7 +11,7 @@ const expenses = [
     id: "e1",
     title: "Toilet Paper",
     amount: 94.12,
-    date: new Date(2020, 7, 14),
+    date: (new Date(2020, 7, 14)),
   },
   { id: "e2", title: "New TV", amount: 799.49, date: new Date(2021, 2, 12) },
   {
@@ -31,12 +31,17 @@ const expenses = [
 
 function App() {
  const [items, setItems] = useState(expenses)
- console.log(items);
+ console.log(items,"dfsdf");
+
 const addExpensesHandler= expense=>{
-    setItems(prev => [...prev, expense])
-  }
-  
-  
+  console.log(expense,'sada');
+    setItems((prev)=>{
+      return (
+        [expense,...prev]
+      )
+    })
+}
+    
   // return(
   //  React.createElement(
   //   'div',{},React.createElement('h2',{},'Lets get started'),
@@ -46,6 +51,8 @@ const addExpensesHandler= expense=>{
   // const para=document.createElement('p');
   // para.textContent ="This is also visible";
   // document.getElementById('root').append(para)
+  
+  
   return (
     <>
     <Card className="App">
@@ -53,13 +60,13 @@ const addExpensesHandler= expense=>{
       <Expenses data={items}/>
      
       {/* <p>This is visible</p> */}
-      
+    
 
       {/* {expenses.map(ele=> <ExpenseItem  key={ele.id} title={ele.title} amount={ele.amount} date={ele.date}/>)} */}
-        {items.map((el)=><ExpenseItem key={el.id} title={el.title} amount={el.amount} date={el.date}/>)}
+        
     </Card>
     </>
   );
 }
-
 export default App;
+
